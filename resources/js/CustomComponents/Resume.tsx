@@ -158,7 +158,21 @@ const data: ResumeData = {
 
 }
 
-const items = [{
+const items = [
+    {
+        title: <p className="text-slate-400 text-lg">Current</p>,
+        cardTitle: <div className="flex gap-x-3 w-full px-5 py-7">
+            <div className="bg-slate-200 h-10 p-2" >
+                <GraduationCapIcon />
+            </div>
+            <div className="flex flex-col gap-2">
+                <p className="text-slate-800 font-bold px-4">Software Developer</p>
+                <p className="text-slate-500 px-4">MICP</p>
+                <p className="text-slate-500 px-4 text-sm" >Aug 2022 - Current</p>
+            </div>
+        </div>
+    },
+    {
     title: <p className="text-slate-400 text-lg">March 2020</p>,
     cardTitle: <div className="flex gap-x-3 w-full px-5 py-7">
         <div className="bg-slate-200 h-10 p-2" >
