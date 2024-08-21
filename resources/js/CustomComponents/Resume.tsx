@@ -5,7 +5,8 @@ import {
 } from "@/Components/ui/avatar"
 import { Button } from "@/Components/ui/button";
 import { url } from "inspector"
-import { BriefcaseIcon, FileSpreadsheetIcon, GraduationCapIcon, MapPinIcon, Phone, PhoneIcon, User2Icon } from "lucide-react";
+import { BriefcaseIcon, CircleDotIcon, FileSpreadsheetIcon, GraduationCapIcon, MapPinIcon, Phone, PhoneIcon, User2Icon, ZapIcon } from "lucide-react";
+import { Chrono } from "react-chrono";
 
 interface Props { }
 interface WorkHistory {
@@ -23,10 +24,16 @@ interface Education {
     end_date: string
 }
 interface Skills {
-    skill:string;
+    skill: string;
     percentage: string;
     description: string;
 
+}
+interface Timelime {
+    position_education: string;
+    address: string;
+    start_date: string;
+    end_date: string;
 }
 interface ResumeData {
     name: string;
@@ -35,7 +42,8 @@ interface ResumeData {
     professional_experience: number;
     work_history: WorkHistory[];
     education: Education[];
-    skills?: Skills[]
+    skills?: Skills[];
+    timeline: Timelime[];
 }
 
 
@@ -65,18 +73,126 @@ const data: ResumeData = {
         address: "Brgy. San Agustin Babatngon, Leyte",
         end_date: "2020-03-15"
     }],
-    // skills : [{
+    skills: [{
+        skill: "React",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Laravel",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Next Js",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Vb.net",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Asp.net Mvc",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Front-end Responsive Designs",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Typescript",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Html",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Css",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Php",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "React native",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Github",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Node js",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Mern Stack",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Mysql",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Mongo Db",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Tailwnd Css",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }, {
+        skill: "Bootstrap Css",
+        percentage: "9/10",
+        description: "Two years professional experience."
+    }],
+    timeline: [
+        {
+            position_education: "High School Diploma",
+            address: "Emeterio-Federica Gerez National High School",
+            start_date: "2018-03-15",
+            end_date: "2019-03-15",
+        }
+    ]
 
-    // }]
+
 }
+
+const items = [{
+    title: <p className="text-slate-400 text-lg">March 2020</p>,
+    cardTitle: <div className="flex gap-x-3 w-full px-5 py-7">
+        <div className="bg-slate-200 h-10 p-2" >
+            <GraduationCapIcon />
+        </div>
+        <div className="flex flex-col gap-2">
+            <p className="text-slate-800 font-bold px-4">Software Development</p>
+            <p className="text-slate-500 px-4">MICP</p>
+            <p className="text-slate-500 px-4 text-sm" >June 2019 - March 2019</p>
+        </div>
+    </div>
+},
+{
+    title: <p className="text-slate-400 text-lg">May 2019</p>,
+    cardTitle: <div className="flex gap-x-3 w-full px-5 py-7">
+        <div className="bg-slate-200 h-10 p-2" >
+            <GraduationCapIcon />
+        </div>
+        <div className="flex flex-col gap-2">
+            <p className="text-slate-800 font-bold px-4">High School Diploma</p>
+            <p className="text-slate-500 px-4">Emeterio-Federica Gerez National High School</p>
+            <p className="text-slate-500 px-4 text-sm" >March 2018 - March 2019</p>
+        </div>
+    </div>
+}];
 const Resume = (props: Props) => {
     return (
         <div className='w-full flex justify-center  bg-gray-100 h-screen overflow-auto'>
-            <div className="flex flex-col w-full items-center gap-y-10   ">
+            <div className="flex flex-col w-full items-center gap-y-10 h-full   ">
 
                 {/* HEADER */}
-                <div className='w-2/4 bg-white h-fit rounded-md pb-5' >
+                <div className='w-2/4 bg-white h-fit rounded-md pb-5 ' >
                     <div className="relative" style={{ height: "500px", backgroundImage: "url(https://assets.zety.com/blobcontent/pwb/background-images/SoftwareDeveloper/Template1/@x1/1920px.png)", backgroundRepeat: "no-repeat", backgroundSize: "contain" }}>
+
                         <div className="absolute top-56 left-10  w-full">
                             <Avatar className="w-40 h-40  border-4 border-white ">
                                 <AvatarImage src={`${route("img")}/profile.jpeg`} alt="@shadcn" />
@@ -202,9 +318,47 @@ const Resume = (props: Props) => {
 
                 {/* SKILLS */}
                 <div className="w-2/4" >
-
+                    <div className="flex items-center text-2xl">
+                        <ZapIcon className="mr-3 w-6 h-6 text-slate-600" />
+                        <p style={{ letterSpacing: ".2em" }} className="text-slate-700">SKILLS</p>
+                    </div>
+                    <div className=' mt-12 px-7 bg-white h-fit rounded-md pb-5 grid grid-cols-3   ' >
+                        {data.skills?.map((skill: Skills, index: number) =>
+                            <div className="flex w-fit gap-2 mt-4 " >
+                                <CircleDotIcon className="w-4 h-4 text-slate-600 font-bold " />
+                                <p className="uppercase text-sm text-slate-700 font-semibold">{skill.skill}</p>
+                            </div>
+                        )}
+                    </div>
                 </div>
+
+                {/* SKILLS */}
+                <div className="w-2/4" >
+                    <div className="flex items-center text-2xl">
+                        <BriefcaseIcon className="mr-3 w-6 h-6 text-slate-600" />
+                        <p style={{ letterSpacing: ".2em" }} className="text-slate-700">TIMELINE</p>
+                    </div>
+
+                    <div className="w-full mt-10" style={{ height: '950px' }}>
+                        <Chrono disableTimelinePoint={false}
+                            theme={{
+                                primary: '#DDE6ED',
+                                secondary: '#DDE6ED',
+                                cardBgColor: 'transparent',
+                                titleColor: 'black',
+                                titleColorActive: 'red',
+                            }}
+                            disableToolbar={true}
+                            allowDynamicUpdate={true}
+                            borderLessCards={true} slideShow
+                            slideItemDuration={4500}
+                            slideShowType="reveal" items={items} fontSiz={"200"} mode="VERTICAL_ALTERNATING" disableInteraction={true} />
+                    </div>
+                </div>
+
             </div>
+
+
 
         </div>
     )
