@@ -322,7 +322,7 @@ const Resume = (props: Props) => {
                         <ZapIcon className="mr-3 w-6 h-6 text-slate-600" />
                         <p style={{ letterSpacing: ".2em" }} className="text-slate-700">SKILLS</p>
                     </div>
-                    <div className=' mt-12 px-7 bg-white h-fit rounded-md pb-5 grid grid-cols-3   ' >
+                    <div className=' mt-12 px-7 bg-white h-fit rounded-md py-5 pb-8 grid grid-cols-3   ' >
                         {data.skills?.map((skill: Skills, index: number) =>
                             <div className="flex w-fit gap-2 mt-4 " >
                                 <CircleDotIcon className="w-4 h-4 text-slate-600 font-bold " />
@@ -332,7 +332,7 @@ const Resume = (props: Props) => {
                     </div>
                 </div>
 
-                {/* SKILLS */}
+                {/* TIMELINE */}
                 <div className="w-2/4" >
                     <div className="flex items-center text-2xl">
                         <BriefcaseIcon className="mr-3 w-6 h-6 text-slate-600" />
